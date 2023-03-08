@@ -32,13 +32,16 @@
         <script src="js/labelgun.min.js"></script>
         <script src="js/labels.js"></script>
         <script src="js/leaflet-measure.js"></script>
-        <script src="data/Rio_1.js"></script>
-        <script src="data/Puentes_2.js"></script>
-        <script src="data/FOT_3.js"></script>
+        <script src="data/lines_0.js"></script>
+        <script src="data/Rio_2.js"></script>
+        <script src="data/Distrito_3.js"></script>
+        <script src="data/Puentes_4.js"></script>
+        <script src="data/ALTURASMAX_5.js"></script>
+        <script src="data/EjidoUrbano_6.js"></script>
         <script>
         var map = L.map('map', {
             zoomControl:true, maxZoom:28, minZoom:1
-        }).fitBounds([[-27.454495196844913,-56.103554143422265],[-27.177345018983615,-55.65887715689445]]);
+        }).fitBounds([[-27.39232529113046,-55.989443462058574],[-27.259872708598294,-55.78184703032278]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -58,20 +61,50 @@
         function setBounds() {
             map.setMaxBounds(map.getBounds());
         }
-        map.createPane('pane_GoogleSatellite_0');
-        map.getPane('pane_GoogleSatellite_0').style.zIndex = 400;
-        var layer_GoogleSatellite_0 = L.tileLayer('https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
-            pane: 'pane_GoogleSatellite_0',
-            opacity: 1.0,
+        function pop_lines_0(feature, layer) {
+        }
+
+        function style_lines_0_0() {
+            return {
+                pane: 'pane_lines_0',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+        }
+        map.createPane('pane_lines_0');
+        map.getPane('pane_lines_0').style.zIndex = 400;
+        map.getPane('pane_lines_0').style['mix-blend-mode'] = 'normal';
+        var layer_lines_0 = new L.geoJson(json_lines_0, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_lines_0',
+            layerName: 'layer_lines_0',
+            pane: 'pane_lines_0',
+            onEachFeature: pop_lines_0,
+            style: style_lines_0_0,
+        });
+        bounds_group.addLayer(layer_lines_0);
+        map.addLayer(layer_lines_0);
+        map.createPane('pane_GoogleSatellite_1');
+        map.getPane('pane_GoogleSatellite_1').style.zIndex = 401;
+        var layer_GoogleSatellite_1 = L.tileLayer('https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
+            pane: 'pane_GoogleSatellite_1',
+            opacity: 0.782,
             attribution: '<a href="https://www.google.at/permissions/geoguidelines/attr-guide.html">Map data ©2015 Google</a>',
             minZoom: 1,
             maxZoom: 28,
             minNativeZoom: 0,
             maxNativeZoom: 20
         });
-        layer_GoogleSatellite_0;
-        map.addLayer(layer_GoogleSatellite_0);
-        function pop_Rio_1(feature, layer) {
+        layer_GoogleSatellite_1;
+        map.addLayer(layer_GoogleSatellite_1);
+        function pop_Rio_2(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
                         <td colspan="2">' + (feature.properties['area'] !== null ? autolinker.link(feature.properties['area'].toLocaleString()) : '') + '</td>\
@@ -80,31 +113,70 @@
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function style_Rio_1_0() {
+        function style_Rio_2_0() {
             return {
-                pane: 'pane_Rio_1',
+                pane: 'pane_Rio_2',
                 stroke: false, 
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(195,221,252,0.7607843137254902)',
+                fillColor: 'rgba(185,205,203,1.0)',
                 interactive: false,
             }
         }
-        map.createPane('pane_Rio_1');
-        map.getPane('pane_Rio_1').style.zIndex = 401;
-        map.getPane('pane_Rio_1').style['mix-blend-mode'] = 'normal';
-        var layer_Rio_1 = new L.geoJson(json_Rio_1, {
+        map.createPane('pane_Rio_2');
+        map.getPane('pane_Rio_2').style.zIndex = 402;
+        map.getPane('pane_Rio_2').style['mix-blend-mode'] = 'normal';
+        var layer_Rio_2 = new L.geoJson(json_Rio_2, {
             attribution: '',
             interactive: false,
-            dataVar: 'json_Rio_1',
-            layerName: 'layer_Rio_1',
-            pane: 'pane_Rio_1',
-            onEachFeature: pop_Rio_1,
-            style: style_Rio_1_0,
+            dataVar: 'json_Rio_2',
+            layerName: 'layer_Rio_2',
+            pane: 'pane_Rio_2',
+            onEachFeature: pop_Rio_2,
+            style: style_Rio_2_0,
         });
-        bounds_group.addLayer(layer_Rio_1);
-        map.addLayer(layer_Rio_1);
-        function pop_Puentes_2(feature, layer) {
+        bounds_group.addLayer(layer_Rio_2);
+        map.addLayer(layer_Rio_2);
+        function pop_Distrito_3(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['AREA'] !== null ? autolinker.link(feature.properties['AREA'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Distrito_3_0() {
+            return {
+                pane: 'pane_Distrito_3',
+                opacity: 1,
+                color: 'rgba(159,159,159,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fillOpacity: 0,
+                interactive: false,
+            }
+        }
+        map.createPane('pane_Distrito_3');
+        map.getPane('pane_Distrito_3').style.zIndex = 403;
+        map.getPane('pane_Distrito_3').style['mix-blend-mode'] = 'normal';
+        var layer_Distrito_3 = new L.geoJson(json_Distrito_3, {
+            attribution: '',
+            interactive: false,
+            dataVar: 'json_Distrito_3',
+            layerName: 'layer_Distrito_3',
+            pane: 'pane_Distrito_3',
+            onEachFeature: pop_Distrito_3,
+            style: style_Distrito_3_0,
+        });
+        bounds_group.addLayer(layer_Distrito_3);
+        map.addLayer(layer_Distrito_3);
+        function pop_Puentes_4(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
                         <td colspan="2">' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
@@ -113,9 +185,9 @@
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function style_Puentes_2_0() {
+        function style_Puentes_4_0() {
             return {
-                pane: 'pane_Puentes_2',
+                pane: 'pane_Puentes_4',
                 stroke: false, 
                 fill: true,
                 fillOpacity: 1,
@@ -123,21 +195,21 @@
                 interactive: false,
             }
         }
-        map.createPane('pane_Puentes_2');
-        map.getPane('pane_Puentes_2').style.zIndex = 402;
-        map.getPane('pane_Puentes_2').style['mix-blend-mode'] = 'normal';
-        var layer_Puentes_2 = new L.geoJson(json_Puentes_2, {
+        map.createPane('pane_Puentes_4');
+        map.getPane('pane_Puentes_4').style.zIndex = 404;
+        map.getPane('pane_Puentes_4').style['mix-blend-mode'] = 'normal';
+        var layer_Puentes_4 = new L.geoJson(json_Puentes_4, {
             attribution: '',
             interactive: false,
-            dataVar: 'json_Puentes_2',
-            layerName: 'layer_Puentes_2',
-            pane: 'pane_Puentes_2',
-            onEachFeature: pop_Puentes_2,
-            style: style_Puentes_2_0,
+            dataVar: 'json_Puentes_4',
+            layerName: 'layer_Puentes_4',
+            pane: 'pane_Puentes_4',
+            onEachFeature: pop_Puentes_4,
+            style: style_Puentes_4_0,
         });
-        bounds_group.addLayer(layer_Puentes_2);
-        map.addLayer(layer_Puentes_2);
-        function pop_FOT_3(feature, layer) {
+        bounds_group.addLayer(layer_Puentes_4);
+        map.addLayer(layer_Puentes_4);
+        function pop_ALTURASMAX_5(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
                         <th scope="row">FIT</th>\
@@ -159,81 +231,11 @@
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function style_FOT_3_0(feature) {
-            switch(String(feature.properties['FOT'])) {
-                case '1.5':
-                    return {
-                pane: 'pane_FOT_3',
-                stroke: false, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(255,248,201,1.0)',
-                interactive: true,
-            }
-                    break;
-                case '2.5':
-                    return {
-                pane: 'pane_FOT_3',
-                stroke: false, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(254,219,20,1.0)',
-                interactive: true,
-            }
-                    break;
-                case '3':
-                    return {
-                pane: 'pane_FOT_3',
-                stroke: false, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(255,159,33,1.0)',
-                interactive: true,
-            }
-                    break;
-                case '4':
-                    return {
-                pane: 'pane_FOT_3',
-                stroke: false, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(207,57,57,1.0)',
-                interactive: true,
-            }
-                    break;
-                case '5':
-                    return {
-                pane: 'pane_FOT_3',
-                stroke: false, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(160,62,177,1.0)',
-                interactive: true,
-            }
-                    break;
-                case '6':
-                    return {
-                pane: 'pane_FOT_3',
-                stroke: false, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(88,37,171,1.0)',
-                interactive: true,
-            }
-                    break;
-                case '7':
-                    return {
-                pane: 'pane_FOT_3',
-                stroke: false, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(0,0,4,1.0)',
-                interactive: true,
-            }
-                    break;
+        function style_ALTURASMAX_5_0(feature) {
+            switch(String(feature.properties['ALTURAS'])) {
                 default:
                     return {
-                pane: 'pane_FOT_3',
+                pane: 'pane_ALTURASMAX_5',
                 stroke: false, 
                 fill: true,
                 fillOpacity: 1,
@@ -241,22 +243,141 @@
                 interactive: true,
             }
                     break;
+                case '0':
+                    return {
+                pane: 'pane_ALTURASMAX_5',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,255,255,0.0)',
+                interactive: true,
+            }
+                    break;
+                case '8':
+                    return {
+                pane: 'pane_ALTURASMAX_5',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(246,234,128,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '12':
+                    return {
+                pane: 'pane_ALTURASMAX_5',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(246,170,81,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '16':
+                    return {
+                pane: 'pane_ALTURASMAX_5',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(241,120,14,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '20':
+                    return {
+                pane: 'pane_ALTURASMAX_5',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(211,47,2,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '26':
+                    return {
+                pane: 'pane_ALTURASMAX_5',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(190,57,121,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Nº Pisos = FOT / FOS':
+                    return {
+                pane: 'pane_ALTURASMAX_5',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(118,94,172,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Tranf. Planificada':
+                    return {
+                pane: 'pane_ALTURASMAX_5',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(178,223,138,1.0)',
+                interactive: true,
+            }
+                    break;
             }
         }
-        map.createPane('pane_FOT_3');
-        map.getPane('pane_FOT_3').style.zIndex = 403;
-        map.getPane('pane_FOT_3').style['mix-blend-mode'] = 'normal';
-        var layer_FOT_3 = new L.geoJson(json_FOT_3, {
+        map.createPane('pane_ALTURASMAX_5');
+        map.getPane('pane_ALTURASMAX_5').style.zIndex = 405;
+        map.getPane('pane_ALTURASMAX_5').style['mix-blend-mode'] = 'normal';
+        var layer_ALTURASMAX_5 = new L.geoJson(json_ALTURASMAX_5, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_FOT_3',
-            layerName: 'layer_FOT_3',
-            pane: 'pane_FOT_3',
-            onEachFeature: pop_FOT_3,
-            style: style_FOT_3_0,
+            dataVar: 'json_ALTURASMAX_5',
+            layerName: 'layer_ALTURASMAX_5',
+            pane: 'pane_ALTURASMAX_5',
+            onEachFeature: pop_ALTURASMAX_5,
+            style: style_ALTURASMAX_5_0,
         });
-        bounds_group.addLayer(layer_FOT_3);
-        map.addLayer(layer_FOT_3);
+        bounds_group.addLayer(layer_ALTURASMAX_5);
+        map.addLayer(layer_ALTURASMAX_5);
+        function pop_EjidoUrbano_6(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['myid'] !== null ? autolinker.link(feature.properties['myid'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SUP'] !== null ? autolinker.link(feature.properties['SUP'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_EjidoUrbano_6_0() {
+            return {
+                pane: 'pane_EjidoUrbano_6',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '10,5',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fillOpacity: 0,
+                interactive: false,
+            }
+        }
+        map.createPane('pane_EjidoUrbano_6');
+        map.getPane('pane_EjidoUrbano_6').style.zIndex = 406;
+        map.getPane('pane_EjidoUrbano_6').style['mix-blend-mode'] = 'normal';
+        var layer_EjidoUrbano_6 = new L.geoJson(json_EjidoUrbano_6, {
+            attribution: '',
+            interactive: false,
+            dataVar: 'json_EjidoUrbano_6',
+            layerName: 'layer_EjidoUrbano_6',
+            pane: 'pane_EjidoUrbano_6',
+            onEachFeature: pop_EjidoUrbano_6,
+            style: style_EjidoUrbano_6_0,
+        });
+        bounds_group.addLayer(layer_EjidoUrbano_6);
+        map.addLayer(layer_EjidoUrbano_6);
             var title = new L.Control();
             title.onAdd = function (map) {
                 this._div = L.DomUtil.create('div', 'info');
@@ -268,7 +389,7 @@
             };
             title.addTo(map);
         var baseMaps = {};
-        L.control.layers(baseMaps,{'FOT<br /><table><tr><td style="text-align: center;"><img src="legend/FOT_3_150.png" /></td><td>1,5</td></tr><tr><td style="text-align: center;"><img src="legend/FOT_3_251.png" /></td><td>2,5</td></tr><tr><td style="text-align: center;"><img src="legend/FOT_3_302.png" /></td><td>3,0</td></tr><tr><td style="text-align: center;"><img src="legend/FOT_3_403.png" /></td><td>4,0</td></tr><tr><td style="text-align: center;"><img src="legend/FOT_3_504.png" /></td><td>5,0</td></tr><tr><td style="text-align: center;"><img src="legend/FOT_3_605.png" /></td><td>6,0</td></tr><tr><td style="text-align: center;"><img src="legend/FOT_3_706.png" /></td><td>7,0</td></tr><tr><td style="text-align: center;"><img src="legend/FOT_3_7.png" /></td><td></td></tr></table>': layer_FOT_3,'<img src="legend/Puentes_2.png" /> Puentes': layer_Puentes_2,'<img src="legend/Rio_1.png" /> Rio': layer_Rio_1,"Google Satellite": layer_GoogleSatellite_0,}).addTo(map);
+        L.control.layers(baseMaps,{'<img src="legend/EjidoUrbano_6.png" /> Ejido Urbano': layer_EjidoUrbano_6,'ALTURAS MAX<br /><table><tr><td style="text-align: center;"><img src="legend/ALTURASMAX_5_0.png" /></td><td></td></tr><tr><td style="text-align: center;"><img src="legend/ALTURASMAX_5_01.png" /></td><td>0</td></tr><tr><td style="text-align: center;"><img src="legend/ALTURASMAX_5_82.png" /></td><td>8</td></tr><tr><td style="text-align: center;"><img src="legend/ALTURASMAX_5_123.png" /></td><td>12</td></tr><tr><td style="text-align: center;"><img src="legend/ALTURASMAX_5_164.png" /></td><td>16</td></tr><tr><td style="text-align: center;"><img src="legend/ALTURASMAX_5_205.png" /></td><td>20</td></tr><tr><td style="text-align: center;"><img src="legend/ALTURASMAX_5_266.png" /></td><td>26</td></tr><tr><td style="text-align: center;"><img src="legend/ALTURASMAX_5_NºPisosFOTFOS7.png" /></td><td>Nº Pisos = FOT / FOS</td></tr><tr><td style="text-align: center;"><img src="legend/ALTURASMAX_5_TranformaciónPlanificada8.png" /></td><td>Tranformación Planificada</td></tr></table>': layer_ALTURASMAX_5,'<img src="legend/Puentes_4.png" /> Puentes': layer_Puentes_4,'<img src="legend/Distrito_3.png" /> Distrito': layer_Distrito_3,'<img src="legend/Rio_2.png" /> Rio': layer_Rio_2,"Google Satellite": layer_GoogleSatellite_1,'<img src="legend/lines_0.png" /> lines': layer_lines_0,}).addTo(map);
         setBounds();
         </script>
     </body>
